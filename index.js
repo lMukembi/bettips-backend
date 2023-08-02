@@ -39,7 +39,9 @@ const getAccessToken = async (req, res, next) => {
       console.log(err);
     });
 };
-
+app.get("/", (req, res) => {
+  res.send("api home");
+});
 //STEP 2 //stk push
 app.post("/stk", getAccessToken, async (req, res) => {
   const phone = req.body.phone.substring(1);
@@ -178,4 +180,7 @@ const index = app.listen(8000, () => console.log("listening to port 8000"));
 process.on("unhandledRejection", (error) => {
   console.log(`Logged Error: ${error}`);
   index.close(() => process.exit(1));
+});
+process.on("uncaughtException", (err) => {
+  console.log("logging error", err);
 });
