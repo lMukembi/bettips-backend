@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "./config.env" });
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -175,7 +176,9 @@ const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-const index = app.listen(8000, () => console.log("listening to port 8000"));
+const index = app.listen(process.env.PORT || 8000, () =>
+  console.log("listening to port 8000")
+);
 
 process.on("unhandledRejection", (error) => {
   console.log(`Logged Error: ${error}`);
