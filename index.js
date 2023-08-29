@@ -99,6 +99,7 @@ app.post("/stk", getAccessToken, async (req, res) => {
 });
 
 app.post("/confirmation", async (req, res) => {
+    console.log("confirmation");
     try {
         const { MSISDN, TransID, TransAmount, FirstName, LastName } = req.body;
 
@@ -132,6 +133,7 @@ app.post("/confirmation", async (req, res) => {
 });
 
 app.post("/validation", async (req, res) => {
+    console.log("validation");
     try {
         return res.json({
             ResultCode: "0",
